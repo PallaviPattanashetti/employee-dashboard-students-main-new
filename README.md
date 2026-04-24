@@ -91,43 +91,28 @@ When complete, document:
 
 
 
-1. List of Bugs
-Login Blocked: Users couldn't get past the login screen.
+1. Issues & Fixes
+Login & Access: Forced the login state to true (Line 17) to bypass a stuck authentication block.
 
-Form Errors: The account creation form had missing data types.
+Data Integrity: Defined form states as UserAccessRequest to fix missing type definitions.
 
-False Success: The system said "User added" even when it failed.
+Error Logic: Updated addUserAction so it correctly reports failed attempts (like taken usernames) instead of showing false success.
 
-UI Crashes: The employee list crashed if a job title was missing.
+Stability: Added safety strings (|| "") to inputs to prevent UI crashes on empty data.
 
-2. Root Causes
-State Settings: A "true/false" setting was stuck, blocking the login.
+2. Employee List Update
+Data Fetching: Updated the Employee List component by uncommenting line 27 and commenting out line 28 to enable the correct data source.
 
-Missing Definitions: The code didn't know what kind of data the form should hold.
+3. Environment & Deployment
+Local Setup: Created a .env.local file and configured the necessary API keys.
 
-Bad Logic: The "Error" section of the code was accidentally set to report success.
+Production: Mirrored these API settings in Vercel to ensure the live site functions identically to the local environment.
 
-Empty Data: The inputs didn't know how to handle empty or "null" text.
+4. Status
+Login: Functional.
 
-3. Fixes Applied
-Login: Forced the login state to true at line 17.
+Forms: No more typing or data errors.
 
-Typing: Defined the form state as UserAccessRequest.
+Messages: Error handling shows correct feedback.
 
-Logic: Fixed the addUserAction to properly report when a username is taken.
-
-Safety: Added || "" (empty strings) to inputs so they don't crash when data is missing.
-
-4. Testing Results
-Login: Works now.
-
-Forms: No more typing errors.
-
-Errors: Shows the correct "Username taken" message.
-
-Display: Employee data shows up smoothly without crashing.
-
-
-In Employee List I uncommented line 27 and commented 28 to get employees
-
-i added .env.local and added api and added in vercel
+Display: Employee data loads smoothly without crashing.
