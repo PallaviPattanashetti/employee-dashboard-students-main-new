@@ -115,9 +115,12 @@ const EmployeeForm = ({
         ...originalEmployee,
         name: originalEmployee.name.trim(),
         jobTitle: originalEmployee.jobTitle.trim(),
+
+
       };
 
       console.log("employee data validated successfully");
+
 
       if (type === "Add") {
         const result = await addEmployeeAction(employeeWithChanges);
